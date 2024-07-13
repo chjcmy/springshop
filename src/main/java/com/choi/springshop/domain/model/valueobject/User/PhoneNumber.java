@@ -1,4 +1,4 @@
-package com.choi.springshop.domain.model.valueobject;
+package com.choi.springshop.domain.model.valueobject.User;
 
 import lombok.Getter;
 import lombok.Setter;
