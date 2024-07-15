@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Email;
 @Setter
 public class EmailAddress {
 
-    @Email
+    @Email(message = ("정확하지 않은 이메일 입니다"))
     private String address;
 
 }

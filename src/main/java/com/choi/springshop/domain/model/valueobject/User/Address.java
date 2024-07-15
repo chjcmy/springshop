@@ -1,6 +1,5 @@
 package com.choi.springshop.domain.model.valueobject.User;
 
-import com.choi.springshop.domain.model.exception.InvalidAddressException;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,20 +8,18 @@ import lombok.Setter;
 @Setter
 public class Address {
 
+    @NotBlank
     private String street;
-
+    @NotBlank
     private String city;
-
+    @NotBlank
     private String state;
-
+    @NotBlank
     private String country;
-
+    @NotBlank
     private String zipCode;
 
-    public Address(String street, String city, String state, String country, String zipCode) throws InvalidAddressException {
-        if (street.isBlank() || city.isBlank() || state.isBlank() || country.isBlank() || zipCode.isBlank()) {
-            throw new InvalidAddressException("All address fields are required.");
-        }
+    public Address(String street, String city, String state, String country, String zipCode) {
         this.street = street;
         this.city = city;
         this.state = state;
