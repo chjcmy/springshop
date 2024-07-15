@@ -1,4 +1,4 @@
-package com.choi.springshop.interfaces.service.Payment;
+package com.choi.springshop.application.service.Payment;
 
 import org.springframework.stereotype.Service;
 

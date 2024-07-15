@@ -1,4 +1,4 @@
-package com.choi.springshop.interfaces.service.Product;
+package com.choi.springshop.application.service.Product;
 
 import org.springframework.stereotype.Service;
 

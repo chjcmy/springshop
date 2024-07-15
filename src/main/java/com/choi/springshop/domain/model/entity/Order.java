@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -23,10 +24,13 @@ public class Order {
     private Date orderDate;
 
     @Column(name = "total_price", nullable = false)
-    private double totalPrice;
+    private Float totalPrice;
 
     @Column(nullable = false)
     private String status;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems;
 
 }
 

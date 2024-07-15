@@ -1,18 +1,17 @@
 package com.choi.springshop.domain.model.valueobject.User;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class PhoneNumber {
-    private final String value;
 
-    public PhoneNumber(String value) {
-        if (!value.matches("^\\+?[1-9]\\d{1,14}$")) {
-            throw new IllegalArgumentException("Invalid phone number format");
-        }
-        this.value = value;
-    }
+    @NotBlank
+    private String CountryCode;
+    @NotBlank
+    private String Number;
 
 }

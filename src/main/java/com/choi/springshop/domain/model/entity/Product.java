@@ -14,8 +14,11 @@ public class Product {
     private Long id;
 
     private String name;
+
     private String description;
+
     private Float price;
+
     private String imageUrl;
 
     @Column(name = "stock")
