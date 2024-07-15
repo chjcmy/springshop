@@ -26,12 +26,15 @@ public class AuthServiceImpl implements AuthService{
         User user = new User();
         user.setUsername(signUpRequest.getUsername());
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-
+        user.setAddress(signUpRequest.getAddress());
 
 
         Set<String> roles = new HashSet<>();
         roles.add("ROLE_USER");  // 예시로 기본 역할 설정
         user.setRoles(roles);
+        user.setAddress(signUpRequest.getAddress());
+        user.setEmail(signUpRequest.getEmail());
+        user.setPhoneNumber(signUpRequest.getPhoneNumber());
 
         userRepository.save(user);
     }

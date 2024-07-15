@@ -1,5 +1,8 @@
 package com.choi.springshop.domain.model.entity;
 
+import com.choi.springshop.domain.model.valueobject.User.Address;
+import com.choi.springshop.domain.model.valueobject.User.EmailAddress;
+import com.choi.springshop.domain.model.valueobject.User.PhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.persistence.*;
@@ -21,14 +24,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String email;
+    @Embedded
+    private EmailAddress email;
 
-    @Column
-    private String address;
+    @Embedded
+    private Address address;
 
-    @Column
-    private String phone;
+    @Embedded
+    private PhoneNumber phoneNumber;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "user_id"))

@@ -4,9 +4,11 @@ import com.choi.springshop.domain.model.valueobject.User.Address;
 import com.choi.springshop.domain.model.valueobject.User.EmailAddress;
 import com.choi.springshop.domain.model.valueobject.User.PhoneNumber;
 import jakarta.validation.Valid;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class SignUpRequest {
     private String username;
     private String password;
@@ -16,4 +18,6 @@ public class SignUpRequest {
     private PhoneNumber phoneNumber;
     @Valid
     private EmailAddress email;
+
+
 }

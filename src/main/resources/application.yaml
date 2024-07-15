@@ -15,7 +15,7 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
 jwt:
-  secret: myVerySecretKeyThatIsAtLeast32BytesLong
+  secret: YWxhZGRpbjpvcGVuc2VzYW1lY2FyZWZ1bGZyZXNoYXRvZnZlcnlzdHJvbmdnZW5lcmF0ZWQ
   expirationMs: 86400000
 
 

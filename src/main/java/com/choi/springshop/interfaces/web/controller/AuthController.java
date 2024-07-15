@@ -3,11 +3,12 @@ package com.choi.springshop.interfaces.web.controller;
 import com.choi.springshop.application.dto.Auth.LoginRequest;
 import com.choi.springshop.application.dto.Auth.LoginResponse;
 import com.choi.springshop.application.dto.Auth.SignUpRequest;
-import com.choi.springshop.infrastructure.jwt.JwtTokenProvider;
 import com.choi.springshop.application.service.Auth.AuthService;
+import com.choi.springshop.infrastructure.jwt.JwtTokenProvider;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,14 +37,26 @@ public class AuthController {
         this.authService = authService;
     }
 
+
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = tokenProvider.generateToken(loginRequest.getUsername());
-        return ResponseEntity.ok(new LoginResponse(jwt));
+
+        String jwt = tokenProvider.generateToken(authentication.getName()); // 사용자 이름으로 토큰 생성
+
+        // 응답 헤더 설정
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + jwt);
+
+        // 응답 본문 설정
+        LoginResponse loginResponse = new LoginResponse(jwt);
+
+        return ResponseEntity.ok().headers(headers).body(loginResponse);
     }
+
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {

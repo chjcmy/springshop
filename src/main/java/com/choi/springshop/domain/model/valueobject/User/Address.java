@@ -1,11 +1,14 @@
 package com.choi.springshop.domain.model.valueobject.User;
 
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Embeddable
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
 
     @NotBlank
@@ -19,11 +22,4 @@ public class Address {
     @NotBlank
     private String zipCode;
 
-    public Address(String street, String city, String state, String country, String zipCode) {
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.country = country;
-        this.zipCode = zipCode;
-    }
 }
