@@ -15,6 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "(:name IS NULL OR p.name LIKE %:name%) AND " +
             "(:minPrice IS NULL OR p.price >= :minPrice) AND " +
             "(:maxPrice IS NULL OR p.price <= :maxPrice) AND " +
+            "(p.stockQuantity >= 0 ) AND " +
             "(:categoryId IS NULL OR p.category.id = :categoryId)")
     Page<Product> findProducts(
             @Param("name") String name,

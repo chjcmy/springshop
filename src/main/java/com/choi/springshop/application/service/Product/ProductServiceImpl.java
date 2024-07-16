@@ -22,16 +22,12 @@ public class ProductServiceImpl implements ProductService{
                 .map(this::convertToDTO);
     }
 
-
     private GetProductResponse convertToDTO(Product product) {
         return new GetProductResponse(
                 product.getId(),
                 product.getName(),
                 product.getDescription(),
-                product.getImageUrl(),
-                product.getPrice(),
-                product.getStockQuantity(),
-                product.getCategory() != null ? product.getCategory().getId() : null
+                product.getPrice()
         );
     }
 }
