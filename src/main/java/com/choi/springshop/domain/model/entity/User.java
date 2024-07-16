@@ -1,8 +1,8 @@
 package com.choi.springshop.domain.model.entity;
 
 import com.choi.springshop.domain.model.valueobject.User.Address;
-import com.choi.springshop.domain.model.valueobject.User.EmailAddress;
 import com.choi.springshop.domain.model.valueobject.User.PhoneNumber;
+import com.choi.springshop.domain.model.valueobject.User.UserEmail;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.persistence.*;
@@ -18,14 +18,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
     @Embedded
-    private EmailAddress email;
+    private UserEmail email;
 
     @Embedded
     private Address address;

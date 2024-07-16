@@ -14,6 +14,7 @@ public class AuthServiceImpl implements AuthService{
 
     private final UserRepository userRepository;
 
+
     private final PasswordEncoder passwordEncoder;
 
     public AuthServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
@@ -27,14 +28,11 @@ public class AuthServiceImpl implements AuthService{
         user.setUsername(signUpRequest.getUsername());
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         user.setAddress(signUpRequest.getAddress());
-
-
-        Set<String> roles = new HashSet<>();
-        roles.add("ROLE_USER");  // 예시로 기본 역할 설정
-        user.setRoles(roles);
-        user.setAddress(signUpRequest.getAddress());
         user.setEmail(signUpRequest.getEmail());
         user.setPhoneNumber(signUpRequest.getPhoneNumber());
+        Set<String> roles = new HashSet<>();
+        roles.add("ROLE_USER");  // 기본 역할 설정
+        user.setRoles(roles);
 
         userRepository.save(user);
     }

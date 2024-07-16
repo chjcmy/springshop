@@ -9,9 +9,9 @@ import jakarta.validation.constraints.Email;
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmailAddress {
+public class UserEmail {
 
     @Email(message = ("정확하지 않은 이메일 입니다"))
-    private String address;
+    private String email;
 
 }

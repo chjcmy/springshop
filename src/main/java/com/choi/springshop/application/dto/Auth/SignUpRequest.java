@@ -1,8 +1,8 @@
 package com.choi.springshop.application.dto.Auth;
 
 import com.choi.springshop.domain.model.valueobject.User.Address;
-import com.choi.springshop.domain.model.valueobject.User.EmailAddress;
 import com.choi.springshop.domain.model.valueobject.User.PhoneNumber;
+import com.choi.springshop.domain.model.valueobject.User.UserEmail;
 import jakarta.validation.Valid;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class SignUpRequest {
     @Valid
     private PhoneNumber phoneNumber;
     @Valid
-    private EmailAddress email;
+    private UserEmail email;
 
 
 }
