@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "products")
 @Getter @Setter
@@ -28,5 +30,8 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private Set<CartItem> cartItems;
 }
 
