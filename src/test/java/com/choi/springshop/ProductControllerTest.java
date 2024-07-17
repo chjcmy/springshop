@@ -43,6 +43,16 @@ public class ProductControllerTest {
 
     }
 
+    @Test
+    void testGetProduct() throws Exception {
+        // Assuming you have a product with id=1 in your database
+        mockMvc.perform(get("/api/products/{id}", 1))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("베이직 티셔츠")) // Example assertion based on expected data
+                .andExpect(jsonPath("$.price").value(15000));
+
+    }
+
 
 
 
