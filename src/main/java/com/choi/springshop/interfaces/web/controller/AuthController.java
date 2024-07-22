@@ -47,14 +47,11 @@ public class AuthController {
 
         String jwt = tokenProvider.generateToken(authentication.getName()); // 사용자 이름으로 토큰 생성
 
-        // 응답 헤더 설정
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + jwt);
 
-        // 응답 본문 설정
-        LoginResponse loginResponse = new LoginResponse(jwt);
 
-        return ResponseEntity.ok().headers(headers).body(loginResponse);
+        return ResponseEntity.ok().headers(headers).body("success");
     }
 
 
