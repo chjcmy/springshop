@@ -10,4 +10,3 @@
 ### 예정
 - 2021/07/13: Domain Modeling
 - 2021/07/20: API Design
-- 2021/07/30: msa design
