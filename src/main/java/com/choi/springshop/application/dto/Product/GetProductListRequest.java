@@ -11,6 +11,6 @@ public class GetProductListRequest {
 
     private String imageUrl;
 
-    private Float price;
+    private Integer price;
 
 }

@@ -5,16 +5,16 @@ import com.choi.springshop.domain.model.entity.QProduct;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
-import java.util.Optional;
 
-import static com.choi.springshop.domain.model.entity.QProduct.product;
-
+@Repository
 public class ProductDslRepositoryImpl implements ProductDslRepository {
 
     private final JPAQueryFactory queryFactory;

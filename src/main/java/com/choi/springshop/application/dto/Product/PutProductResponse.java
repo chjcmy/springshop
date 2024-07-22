@@ -10,7 +10,7 @@ public class PutProductResponse {
 
     private String description;
 
-    private Float price;
+    private Integer price;
 
     private String imageUrl;
 

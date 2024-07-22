@@ -10,7 +10,7 @@ public class PostProductResponse {
 
     private String description;
 
-    private Float price;
+    private Integer price;
 
     private Integer stockQuantity;
 

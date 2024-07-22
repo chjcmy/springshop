@@ -15,7 +15,7 @@ public class GetProductRequest {
 
     private String description;
 
-    private Float price;
+    private Integer price;
 
     private String imageUrl;
 

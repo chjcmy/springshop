@@ -25,4 +25,7 @@ public class CartItem {
     @Column(nullable = false)
     private Integer quantity;
 
+    @Column
+    private Boolean active = true;
+
 }

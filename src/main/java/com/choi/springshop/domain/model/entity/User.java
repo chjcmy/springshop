@@ -1,12 +1,15 @@
 package com.choi.springshop.domain.model.entity;
 
+import com.choi.springshop.domain.model.valueobject.Cart.CartStatus;
 import com.choi.springshop.domain.model.valueobject.User.Address;
 import com.choi.springshop.domain.model.valueobject.User.PhoneNumber;
 import com.choi.springshop.domain.model.valueobject.User.UserEmail;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -39,9 +42,30 @@ public class User {
     private Set<String> roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Order> orders;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Cart cart;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private Set<Cart> carts = new HashSet<>();
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "active_cart_id")
+    private Cart activeCart;
+
+    public void addCart(Cart cart) {
+        carts.add(cart);
+        cart.setUser(this);
+        if (cart.getStatus() == CartStatus.ACTIVE) {
+            setActiveCart(cart);
+        }
+    }
+
+    public void setActiveCart(Cart cart) {
+        if (activeCart != null && activeCart != cart) {
+            activeCart.setStatus(CartStatus.ABANDONED);
+        }
+        activeCart = cart;
+        cart.setStatus(CartStatus.ACTIVE);
+    }
 }

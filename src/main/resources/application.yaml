@@ -16,7 +16,11 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
 jwt:
   secret: YWxhZGRpbjpvcGVuc2VzYW1lY2FyZWZ1bGZyZXNoYXRvZnZlcnlzdHJvbmdnZW5lcmF0ZWQ
-  expirationMs: 86400000
+  expirationMs: 999999999
+
+logging:
+  level:
+    org.springframework.security: DEBUG
 
 
 
