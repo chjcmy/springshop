@@ -44,7 +44,12 @@ public class SecurityConfig {
                                 .requestMatchers("/api/public/**").permitAll()
                                 .requestMatchers("/api/products/**").permitAll()
                                 .requestMatchers("/api/carts/**").hasAuthority("USER")
+                                .requestMatchers("/api/user/**").hasAuthority("USER")
                                 .requestMatchers("/exam/**").permitAll()
+                                .requestMatchers("/confirm").permitAll()
+                                .requestMatchers("/start").permitAll()
+                                .requestMatchers("/error").permitAll()
+                                .requestMatchers("/checkout.html").permitAll()
                                 .anyRequest().authenticated());
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

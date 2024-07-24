@@ -23,13 +23,11 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/me")
-    @PreAuthorize("hasRole('USER')")
     public UserResponse getCurrentUser(Authentication authentication) {
         return userService.getUserByUsername(authentication.getName());
     }
 
     @PutMapping("/me")
-    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> updateUser(
             @RequestBody UpdateUserRequest updateUserRequest,
             Authentication authentication) {

@@ -4,10 +4,12 @@ import com.choi.springshop.application.dto.Cart.GetItemResponse;
 import com.choi.springshop.application.dto.Cart.PutItemRequest;
 import com.choi.springshop.domain.model.entity.Cart;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
+@Service
 public interface CartService {
     Cart createCart(String userId);
 
